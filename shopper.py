@@ -91,6 +91,7 @@ def product_cat_feat(products_cat):
                 "\n2. Edit products in log"
                 "\n3. Add products to log"
                 "\n4. Remove prodcuts from log"
+                "\nEnter the choice number: "
             )
             if choices == "1":
                 prd_cat_dis()
@@ -197,4 +198,4 @@ def request_router():
             product_cat_feat(products_cat)
         else:
             shop_cart_feat(shopping_cart, products_cat)
-request_router
+request_router()
