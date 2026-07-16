@@ -8,9 +8,9 @@
 # Search student by name
 # Display all
 
-# Initializing student DB in a list of dicts 
+# Initializing student DB in a list of dicts
 stud_db: list = [
-    
+
     { "Name": "Aditya",
       "Course": "CS",
       "Roll": 100,
@@ -20,9 +20,9 @@ stud_db: list = [
 ]
 
 def operations(DB:list):
-    
-    # defining logic for each feature 
-    
+
+    # defining logic for each feature
+
     # addin student
     def add_stud():
         name = input("Enter the name : ")
@@ -45,34 +45,34 @@ def operations(DB:list):
         for i, entry in enumerate(DB):
             if entry.get("Name") == name:
                 index = i
-                break 
-        if index is not None:
-            del DB[i]
-            print("Deleted entry successfully\n")
+                break
+                if index is not None:
+                     del DB[i]
+                     print("Deleted entry successfully\n")
         else:
             return "record not found"
-    
+
     # updating centage
     def update_marks():
         name = input("Enter the name of student who's marks need to be updated: ")
-        
+
         for item in DB:
             if item["Name"] == name:
-                print("Data found, current final percentage is: ", {item["Final percentage"]}) 
+                print("Data found, current final percentage is: ", {item["Final percentage"]})
                 item["Final_percentage"] = input("Enter the updated percentage: ")
                 print("Updated succesfully\n")
-                break 
+                break
         else:
-            return "Invalid input" 
+            return "Invalid input"
 
 
-    # Find topper 
+    # Find topper
     def find_topper():
         topper = max(DB, key=lambda stud: stud["Final percentage"])
         if topper in DB:
             print(f"Topper: {topper["Name"]} \n Percentage: {topper["Final percentage"]}")
         return "Enter a valid input"
-    
+
     # find average
     def find_avg():
         for stud in DB:
@@ -85,8 +85,8 @@ def operations(DB:list):
         n = 35
         Pass = sum( 1 for stud in DB if stud["Final percentage"] > n )
         fail = sum( 1 for stud in DB if stud["Final percentage"] < n )
-        print(f"Number of passed students: {Pass} \n Number of failed students: {fail}")    
-   
+        print(f"Number of passed students: {Pass} \n Number of failed students: {fail}")
+
     # find by name
     def find_name():
         name = input("Enter student name to be found: ")
@@ -97,15 +97,15 @@ def operations(DB:list):
                         f"\nRoll: {stud["Roll"]}"
                         f"\nFinal percent: {stud["Final percentage"]}")
             return "Not found"
-    
+
     # displaying students
     def display_studs():
         for item in DB:
             print(item)
-     
-     
 
-    # definig CLI menu 
+
+
+    # definig CLI menu
     while True:
         opr = (input("\n Choose an operation from below: "
                      "\nAdd student"
@@ -119,8 +119,8 @@ def operations(DB:list):
                      "\nExit"
                      "\n"
                 )).lower()
-    
-        # routing requests     
+
+        # routing requests
         if "add" in opr:
             add_stud()
         elif "remove" in opr:
@@ -140,6 +140,6 @@ def operations(DB:list):
         elif "exit" in opr:
             break
         else:
-            return "Invalid option" 
+            return "Invalid option"
 
 operations(DB=stud_db)
