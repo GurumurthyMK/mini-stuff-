@@ -91,6 +91,7 @@ def product_cat_feat(products_cat):
                 "\n2. Edit products in log"
                 "\n3. Add products to log"
                 "\n4. Remove prodcuts from log"
+                "\n5. Exit"
                 "\nEnter the choice number: "
             )
             if choices == "1":
@@ -101,6 +102,7 @@ def product_cat_feat(products_cat):
                 add_prd()
             elif choices == "4":
                 del_prd()
+            else:
                 break
 
     menu()
@@ -128,7 +130,7 @@ def shop_cart_feat(shopping_cart, products_cat):
         # modifying prodducts catalog to match new stock
         for item in products_cat:
             if item.get("Name") == new_entry.get("Name"):
-                item["SKU"] = item["SKU"] - add_sku
+                item["SKU"] = item["SKU"] - int(add_sku)
         return "Invalid entries"
 
     # defining deleting logic
@@ -176,6 +178,7 @@ def shop_cart_feat(shopping_cart, products_cat):
                 "\n2. Add products to cart"
                 "\n3. Delete products from cart"
                 "\n4. Checkout prodcuts from cart"
+                "\n5. Exit"
             )
             if choices == "1":
                 tc_dis()
@@ -185,6 +188,7 @@ def shop_cart_feat(shopping_cart, products_cat):
                 dlt_tc()
             elif choices == "4":
                 checkout_tc()
+            else:
                 break
 
     menu()
@@ -193,8 +197,10 @@ def shop_cart_feat(shopping_cart, products_cat):
 def request_router():
     while True:
         personnel = input("Are you an admin(Y/n): ")
-        if personnel == "Y":
+        if personnel.lower() == "y":
             product_cat_feat(products_cat)
-        else:
+        elif personnel.lower() == "n":
             shop_cart_feat(shopping_cart, products_cat)
+        else:
+            break
 request_router()
