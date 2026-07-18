@@ -105,7 +105,6 @@ def product_cat_feat(products_cat):
 
     menu()
 
-
 # Building shopping cart features
 def shop_cart_feat(shopping_cart, products_cat):
 
